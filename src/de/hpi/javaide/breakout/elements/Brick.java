@@ -29,6 +29,7 @@ public class Brick extends Rectangular {
 	public void display() {
 		// TODO Auto-generated method stub
 		game.rectMode(PApplet.CENTER);
+		game.noStroke();
 		game.fill(getR(), getG(), getB());
 		if(!this.isDead()){
 			game.rect(getX(), getY(), getWidth(), getHeight());

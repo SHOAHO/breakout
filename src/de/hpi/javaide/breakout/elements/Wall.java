@@ -47,10 +47,10 @@ public class Wall implements Displayable, Iterable<Brick> {
 		
 		for(int i = 0; i < columns; i++){
 			for(int j = 0; j < rows; j++){
-				int x = ((i + 1) * Brick.getOffset()) + (i * Brick.getWidthBrick()) +
-						(Brick.getWidthBrick()/2);
-				int y = ((j + 1) * Brick.getOffset()) + (j * Brick.getHeightBrick()) + 
-						(Brick.getHeightBrick()/2);
+				int x = ((i + 1) * Brick.getOffset()) + (i * Brick.getWidthBrick()) 
+						+ (Brick.getWidthBrick()/2);
+				int y = ((j + 1) * Brick.getOffset()) + (j * Brick.getHeightBrick())  
+						+ (Brick.getHeightBrick()/2);
 				wall.add(new Brick(game, new Point(x,y), 
 						 new Dimension(Brick.getWidthBrick(),Brick.getHeightBrick())));
 		    }
