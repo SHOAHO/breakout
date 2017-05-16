@@ -22,11 +22,13 @@ import processing.core.PApplet;
 public class Ball extends Elliptic {
 	
 	private Vector direction;
+	private int fullsize;
 	
 	public Ball(Game game, Point position) {
 		super(game, position, new Dimension(10, 10));
 		setColor(255,255,255);
-		direction = new Vector(2,2);		
+		direction = new Vector(2,2);	
+		fullsize = 30;
 	}
 
 	@Override
@@ -38,6 +40,10 @@ public class Ball extends Elliptic {
 		game.ellipse(getX(), getY(), getWidth(), getHeight());
 	}
 
+	public int getFullsize() {
+		return fullsize;
+	}
+	
 	void bounceX() {
 		direction.setX(-direction.getX());
 	}

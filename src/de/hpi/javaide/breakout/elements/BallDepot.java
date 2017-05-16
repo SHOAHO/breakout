@@ -18,7 +18,6 @@ public class BallDepot implements Displayable, Measureable {
 	private int x;
 	private int y;
 	private int distance;
-	private int fullsize;
 
 	public BallDepot(Game game) {
 		// TODO Auto-generated constructor stub
@@ -27,7 +26,6 @@ public class BallDepot implements Displayable, Measureable {
 		x = game.width-140;
 		y = game.height-60;
 		distance = 25;
-		fullsize = 30;
 		for(int i=0; i<Game.LIVES; i++){
 			balls.add(new Ball(game, new Point(x + (i * distance), y)));
 		}
@@ -77,7 +75,8 @@ public class BallDepot implements Displayable, Measureable {
 			return null;
 		} else {
 			Ball currentBall = balls.remove(balls.size() - 1);
-			currentBall.update(Game.STARTPOSITION, new Dimension(fullsize, fullsize));
+			currentBall.update(Game.STARTPOSITION, 
+					           new Dimension(currentBall.getFullsize(), currentBall.getFullsize()));
 			return currentBall;
 		}
 	}
