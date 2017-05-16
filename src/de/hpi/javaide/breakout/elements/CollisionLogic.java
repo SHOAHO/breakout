@@ -3,8 +3,6 @@ package de.hpi.javaide.breakout.elements;
 import java.awt.geom.Rectangle2D;
 import java.util.Iterator;
 
-import de.hpi.javaide.breakout.screens.Screen;
-import de.hpi.javaide.breakout.screens.ScreenManager;
 import de.hpi.javaide.breakout.starter.Game;
 
 //TODO den Fehler unten haben wir absichtlich eingebaut, um zu zeigen, dass hier noch was getan werden muss.
@@ -32,12 +30,12 @@ public class CollisionLogic {
 	 */
 	public static void checkCollision(Game game, Ball ball, Paddle paddle, Wall wall) {
 		// TODO
-		if (ball.getX() > Game.SCREEN_X - 15 || ball.getX() < 30/2) {
+		if (ball.getX() > Game.SCREEN_X - ball.getFullsize()/2 || ball.getX() < ball.getFullsize()/2) {
 			ball.bounceX();
 		}
 
-		if (ball.getY() > Game.SCREEN_Y - 15 || ball.getY() < 30/2) {
-			if (ball.getY() > Game.SCREEN_Y -15){
+		if (ball.getY() > Game.SCREEN_Y - ball.getFullsize()/2 || ball.getY() < ball.getFullsize()/2) {
+			if (ball.getY() > Game.SCREEN_Y - ball.getFullsize()/2){
 				
 			} else {
 				ball.bounceY();

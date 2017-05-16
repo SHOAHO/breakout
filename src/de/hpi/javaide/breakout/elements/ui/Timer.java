@@ -31,7 +31,8 @@ public class Timer extends UIObject {
 			if(seconds > 0){
 				seconds--;
 			} else { 
-		    	ScreenManager.setScreen(game, Screen.END);
+			  seconds = 60;	
+			  game.increaseScore(-1);
 			}
 			time = game.millis();
 		}
