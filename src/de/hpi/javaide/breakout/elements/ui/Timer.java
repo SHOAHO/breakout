@@ -2,8 +2,6 @@ package de.hpi.javaide.breakout.elements.ui;
 
 import de.hpi.javaide.breakout.basics.Font;
 import de.hpi.javaide.breakout.basics.UIObject;
-import de.hpi.javaide.breakout.screens.Screen;
-import de.hpi.javaide.breakout.screens.ScreenManager;
 import de.hpi.javaide.breakout.starter.Game;
 
 public class Timer extends UIObject {
@@ -30,9 +28,11 @@ public class Timer extends UIObject {
 		if(game.millis() - time >= 1000){
 			if(seconds > 0){
 				seconds--;
+				if(seconds < 10){
+					game.increaseScore(-1);
+				}
 			} else { 
-			  seconds = 60;	
-			  game.increaseScore(-1);
+				seconds = 60;	
 			}
 			time = game.millis();
 		}

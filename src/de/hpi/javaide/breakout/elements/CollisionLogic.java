@@ -30,33 +30,40 @@ public class CollisionLogic {
 	 */
 	public static void checkCollision(Game game, Ball ball, Paddle paddle, Wall wall) {
 		// TODO
-		if (ball.getX() > Game.SCREEN_X - ball.getFullsize()/2 || ball.getX() < ball.getFullsize()/2) {
-			ball.bounceX();
-		}
-
-		if (ball.getY() > Game.SCREEN_Y - ball.getFullsize()/2 || ball.getY() < ball.getFullsize()/2) {
-			if (ball.getY() > Game.SCREEN_Y - ball.getFullsize()/2){
-				
-			} else {
-				ball.bounceY();
-			}
-		}
-		
-		if (ball.getGeometry().intersects((Rectangle2D) paddle.getGeometry())){
+		if(checkCollisionLeftAndRightBorder(game,ball)){
+			ball.bounceX();	
+		} else if(checkCollisionTopBorder(game,ball)){
 			ball.bounceY();
-		}
-
-		for ( Iterator<Brick> iterator = wall.iterator(); iterator.hasNext(); ){
-			Brick brick = iterator.next();
-			if (ball.getGeometry().intersects((Rectangle2D) brick.getGeometry())){
-				if(!brick.isDead()){
-					ball.bounceY();
-					brick.nextStatus();	
-					game.increaseScore(1);
-				}
+		} else if(checkCollisionPaddle(game,ball,paddle)){
+			ball.bounceY();
+		} else {
+			for ( Iterator<Brick> iterator = wall.iterator(); iterator.hasNext(); ){
+				Brick brick = iterator.next();
+				if (checkCollisionBrick(game,ball,brick)){
+					if(!brick.isDead()){
+						ball.bounceY();
+						brick.nextStatus();	
+						game.increaseScore(1);
+					}
+				}			
 			}			
-		}
-				
+		}		
 	}
-
+	
+	public static boolean checkCollisionLeftAndRightBorder(Game game, Ball ball){
+		return 0 > (ball.getX() - ball.getWidth()/2) ||
+				   Game.SCREEN_X < (ball.getX() + ball.getWidth()/2);
+	}
+	
+	public static boolean checkCollisionTopBorder(Game game, Ball ball){
+		return 0 > (ball.getY() - ball.getHeight()/2);
+	}
+	
+	public static boolean checkCollisionPaddle(Game game, Ball ball, Paddle paddle){
+		return ball.getGeometry().intersects((Rectangle2D) paddle.getGeometry());
+	}	
+	
+	public static boolean checkCollisionBrick(Game game, Ball ball, Brick brick){
+		return ball.getGeometry().intersects((Rectangle2D) brick.getGeometry());
+	}	
 }

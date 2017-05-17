@@ -27,8 +27,8 @@ public class Ball extends Elliptic {
 	public Ball(Game game, Point position) {
 		super(game, position, new Dimension(10, 10));
 		setColor(255,255,255);
-		direction = new Vector(2,2);	
-		fullsize = 30;
+		direction = new Vector(7,7);	
+		fullsize = 20;
 	}
 
 	@Override
@@ -40,21 +40,26 @@ public class Ball extends Elliptic {
 		game.ellipse(getX(), getY(), getWidth(), getHeight());
 	}
 
-	public int getFullsize() {
-		return fullsize;
-	}
-	
-	void bounceX() {
+    public int getFullsize() {
+    	return fullsize;
+    }
+    
+	public void bounceX() {
 		direction.setX(-direction.getX());
 	}
 
-	void bounceY() {
+	public void bounceY() {
 		direction.setY(-direction.getY());
 	}	
+	
+	public void setSpeed(int speed){
+		direction.mult(speed);
+		direction.normalize();
+	}
 	
 	public void move() {
 		// TODO Auto-generated method stub
 		update(new Point(getX() + (int) direction.getX(), 
 				         getY() + (int) direction.getY()), this.dimension);
-	}
+	}	
 }
