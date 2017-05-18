@@ -28,4 +28,10 @@ public class Paddle extends Rectangular {
 	public void move() {
 		update(new Point(game.mouseX, getY()), new Dimension(getWidth(), getHeight()));
 	}
+	public void stepRight(){
+		update(new Point( getX() + 10, getY() ), new Dimension(getWidth(), getHeight()) );
+	}
+	public void stepLeft(){
+		update(new Point( getX() - 10, getY() ), new Dimension(getWidth(), getHeight()) );
+	}
 }

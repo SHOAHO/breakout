@@ -132,6 +132,13 @@ public class GameScreen implements Screen {
 			currentBall = ballDepot.dispense();
 			break;
 		case Screen.KEY_SPACE:
+			break;
+		case "h":
+			paddle.stepRight();
+			break;
+		case "g":
+			paddle.stepLeft();
+			break;
 		default:
 			break;
 		}
