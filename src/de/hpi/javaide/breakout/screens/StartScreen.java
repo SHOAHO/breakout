@@ -82,7 +82,7 @@ public class StartScreen implements Screen {
 	@Override
 	public void display() {
 		if(start == false){
-//			System.out.println("input name");
+			System.out.println("input name");
 			game.fill(255);
 			game.textFont(Font.getFont24());
 			game.text("Please enter your name:" + name, game.width/4, game.height/2);	
