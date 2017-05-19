@@ -55,7 +55,14 @@ public class Game extends PApplet implements GameConstants {
 			System.out.println("nach links");
 			ScreenManager.getCurrentScreen().handleKeyPressed("g");
 			break;
-		default: System.out.println("key:" + key + "/"); break;
+		case DELETE:
+		case BACKSPACE:		
+			ScreenManager.getCurrentScreen().handleKeyPressed(Screen.KEY_DELETE);
+			break;			
+		default: 
+			System.out.println("key:" + key + "/"); 
+			ScreenManager.getCurrentScreen().handleKeyPressed("" + key);				
+			break;
 		}
 	}
 

@@ -15,8 +15,10 @@ public interface Screen extends Initializable, Displayable, Updateable {
 	String GAME = "game";
 	String END = "end";
 
-	String KEY_ENTER = "Enter key pressed";
-	String KEY_SPACE = "Space key pressed";
+	String KEY_ENTER 		= "Enter key pressed";
+	String KEY_SPACE 		= "Space key pressed";
+	String KEY_DELETE 		= "Delete key pressed";
+	String KEY_BACKSPACE 	= "Backspace key pressed";
 
 	void handleKeyPressed(String key);
 

@@ -1,5 +1,6 @@
 package de.hpi.javaide.breakout.screens;
 
+import de.hpi.javaide.breakout.basics.Font;
 import de.hpi.javaide.breakout.basics.UIObject;
 import de.hpi.javaide.breakout.elements.ui.Info;
 import de.hpi.javaide.breakout.starter.Game;
@@ -22,6 +23,8 @@ public class StartScreen implements Screen {
 	 */
 	private Game game;
 	private UIObject infoBox;
+	String name;
+	boolean start = false;
 	
 	private StartScreen(Game game){
 		this.game = game;
@@ -57,8 +60,11 @@ public class StartScreen implements Screen {
 	 */
 	@Override
 	public void init() {
-		game.noLoop();
-		game.background(0);
+//		game.noLoop();
+		if(name == null){ 
+			name = " ";	
+		}
+		game.background(0);	
 		String info = "Press Enter to start!\n";
 		info += "Press Enter to launch the balls\n";
 		infoBox = new Info(game, info);
@@ -73,18 +79,37 @@ public class StartScreen implements Screen {
 
 	@Override
 	public void display() {
-		System.out.println("Hit enter to start");
-		infoBox.display();
+		if(start == false){
+//			System.out.println("input name");
+			game.fill(255);
+			game.textFont(Font.getFont24());
+			game.text("Please enter your name:" + name, game.width/4, game.height/2);	
+		} else {
+			System.out.println("Hit enter to start");
+			infoBox.display();		
+		}
 	}
 
 	@Override
 	public void handleKeyPressed(String key) {
 		switch (key) {
 		case Screen.KEY_ENTER: 
-			System.out.println("starting..");
-			ScreenManager.setScreen(game, Screen.GAME);
+			if(start == false){
+				System.out.println("input name end");
+				start = true;
+			} else {
+				start = false;
+				System.out.println("starting..");
+				ScreenManager.setScreen(game, Screen.GAME);
+			}
 			break;
-		default: break;
+		case Screen.KEY_DELETE:
+		case Screen.KEY_BACKSPACE:	
+			name = name.substring(0, name.length()-1);
+			break;
+		default: 
+			name = name + key;
+			break;
 		}
 	}
 
