@@ -139,6 +139,9 @@ public class GameScreen implements Screen {
 		case "g":
 			paddle.stepLeft();
 			break;
+		case " ":
+			currentBall.setSpeed(2);
+			break;
 		default:
 			break;
 		}

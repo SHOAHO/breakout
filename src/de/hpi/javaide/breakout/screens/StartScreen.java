@@ -67,6 +67,8 @@ public class StartScreen implements Screen {
 		game.background(0);	
 		String info = "Press Enter to start!\n";
 		info += "Press Enter to launch the balls\n";
+		info += "Move paddle using your mouse\n";
+		info += "or keys <H>(right) and <G>(left)\n";
 		infoBox = new Info(game, info);
 		infoBox.display();
 	}
