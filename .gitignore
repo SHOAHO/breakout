@@ -1,3 +1,6 @@
 .class
 .classpath
 .classpath
+bin/de/hpi/javaide/breakout/starter/Game.class
+*.class
+bin/de/hpi/javaide/breakout/screens/GameScreen.class
