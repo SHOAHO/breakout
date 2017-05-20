@@ -23,7 +23,6 @@ public class StartScreen implements Screen {
 	 */
 	private Game game;
 	private UIObject infoBox;
-	String name;
 	boolean start = false;
 	
 	private StartScreen(Game game){
@@ -61,9 +60,6 @@ public class StartScreen implements Screen {
 	@Override
 	public void init() {
 //		game.noLoop();
-		if(name == null){ 
-			name = " ";	
-		}
 		game.background(0);	
 		String info = "Press Enter to start!\n";
 		info += "Press Enter to launch the balls\n";
@@ -85,7 +81,7 @@ public class StartScreen implements Screen {
 			System.out.println("input name");
 			game.fill(255);
 			game.textFont(Font.getFont24());
-			game.text("Please enter your name:" + name, game.width/4, game.height/2);	
+			game.text("Please enter your name:" + (game.getHighscore().getUserName()), game.width/4, game.height/2);	
 		} else {
 			System.out.println("Hit enter to start");
 			infoBox.display();		
@@ -107,10 +103,10 @@ public class StartScreen implements Screen {
 			break;
 		case Screen.KEY_DELETE:
 		case Screen.KEY_BACKSPACE:	
-			name = name.substring(0, name.length()-1);
+			game.getHighscore().setUserName(game.getHighscore().getUserName().substring(0, game.getHighscore().getUserName().length()-1));
 			break;
 		default: 
-			name = name + key;
+			game.getHighscore().setUserName(game.getHighscore().getUserName() + key);
 			break;
 		}
 	}

@@ -54,7 +54,7 @@ public class Ball extends Elliptic {
 	
 	public void setSpeed(int speed){
 		direction.mult(speed);
-		direction.normalize();
+//		direction.normalize();
 	}
 	
 	public void move() {

@@ -1,6 +1,7 @@
 package de.hpi.javaide.breakout.starter;
 
 import de.hpi.javaide.breakout.basics.Font;
+import de.hpi.javaide.breakout.elements.ui.Highscore;
 import de.hpi.javaide.breakout.screens.Screen;
 import de.hpi.javaide.breakout.screens.ScreenManager;
 import processing.core.PApplet;
@@ -73,5 +74,9 @@ public class Game extends PApplet implements GameConstants {
 
 	public void increaseScore(int i) {
 		ScreenManager.getCurrentScreen().increaseScore(i);
+	}
+	
+	public Highscore getHighscore() {
+		return Highscore.getInstance(this);
 	}
 }

@@ -12,7 +12,15 @@ public class Score extends UIObject {
 		super(game);
 		score = 0;
 	}
-
+	
+	public void setScore(int score) {
+		this.score = score;
+	}	
+	
+	public int getScore() {
+		return score;
+	}	
+	
 	@Override
 	public void display() {
 		// TODO Auto-generated method stub
