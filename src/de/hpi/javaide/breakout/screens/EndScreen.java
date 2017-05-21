@@ -25,6 +25,8 @@ public class EndScreen implements Screen {
 	 * A UIObject to display some information
 	 */
 	private UIObject infoBox;
+	
+	private boolean start = false;
 
 	private EndScreen(Game game) {
 		this.game = game;
@@ -59,6 +61,10 @@ public class EndScreen implements Screen {
     */
 	@Override
 	public void init() {
+		System.out.println("Load highscore");
+		game.getHighscore().loadHighscore();
+		System.out.println("Save highscore");
+		game.getHighscore().updateHighscore();
 		game.background(0);
 		String info = "Game over!!!\n";
 		info += "Press Enter to restart!\n";
@@ -73,16 +79,27 @@ public class EndScreen implements Screen {
 
 	@Override
 	public void display() {
-		System.out.println("Game over: Hit enter to restart.");
-		infoBox.display();
+		if(start == false){
+			System.out.println("Output Highscore");
+			game.getHighscore().display();	
+		} else {		
+			System.out.println("Game over: Hit enter to restart.");
+			infoBox.display();
+		}
 	}
 
 	@Override
 	public void handleKeyPressed(String key) {
 		switch (key) {
 		case Screen.KEY_ENTER:
-			System.out.println("restart..");
-			ScreenManager.setScreen(game, Screen.START);
+			if(start == false){
+				System.out.println("Output Highscore end");
+				start = true;
+			} else {
+				start = false;
+				System.out.println("restart..");
+				ScreenManager.setScreen(game, Screen.START);
+			}		
 		}
 	}
 

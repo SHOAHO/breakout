@@ -85,6 +85,7 @@ public class GameScreen implements Screen {
 		paddle = new Paddle(game);
 		wall = new Wall(game, 6, 7);
 		score = new Score(game);
+		game.getHighscore().setInstanceScore((Score) score);
 		timer = new Timer(game);
 		game.loop();
 	}

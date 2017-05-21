@@ -23,7 +23,7 @@ public class StartScreen implements Screen {
 	 */
 	private Game game;
 	private UIObject infoBox;
-	boolean start = false;
+	private boolean start = false;
 	
 	private StartScreen(Game game){
 		this.game = game;
