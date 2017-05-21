@@ -110,7 +110,7 @@ public class StartScreen implements Screen {
 		case Screen.KEY_DELETE:
 		case Screen.KEY_BACKSPACE:	
 			game.getHighscore().setUserName(game.getHighscore().getUserName().substring(0, game.getHighscore().getUserName().length()-1));
-			break;
+			break;			
 		case "1":
 			if(start == true){
 				game.setPaddleMode('1');
@@ -129,7 +129,11 @@ public class StartScreen implements Screen {
 			game.getHighscore().setUserName(game.getHighscore().getUserName() + key);	
 		}			
 			break;
-			
+		case Screen.CURSOR_RIGHT:
+		case Screen.CURSOR_LEFT:
+		case Screen.CURSOR_UP:
+		case Screen.CURSOR_DOWN:
+			break;
 		default: 
 			game.getHighscore().setUserName(game.getHighscore().getUserName() + key);
 			break;

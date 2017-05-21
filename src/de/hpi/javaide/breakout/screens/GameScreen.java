@@ -164,10 +164,14 @@ public class GameScreen implements Screen {
 			}
 			break;
 		case Screen.CURSOR_UP:
-			currentBall.setSpeed((float)1.5);
+			if(currentBall != null){
+				currentBall.setSpeed((float)1.5);	
+			}
 			break;
 		case Screen.CURSOR_DOWN:
-			currentBall.setSpeed((float)0.666);
+			if(currentBall != null){
+				currentBall.setSpeed((float)0.666);
+			}
 			break;
 		default:
 			break;

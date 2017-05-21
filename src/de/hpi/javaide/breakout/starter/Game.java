@@ -71,14 +71,6 @@ public class Game extends PApplet implements GameConstants {
 		case ENTER:
 			ScreenManager.getCurrentScreen().handleKeyPressed(Screen.KEY_ENTER);
 			break;
-		case LEFT: 
-			System.out.println("nach links");
-			ScreenManager.getCurrentScreen().handleKeyPressed(Screen.CURSOR_LEFT);
-			break;
-		case RIGHT:
-			System.out.println("nach rechts");
-			ScreenManager.getCurrentScreen().handleKeyPressed(Screen.CURSOR_RIGHT);
-			break;
 		case DELETE:
 		case BACKSPACE:		
 			ScreenManager.getCurrentScreen().handleKeyPressed(Screen.KEY_DELETE);
