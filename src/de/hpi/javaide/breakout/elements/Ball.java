@@ -26,8 +26,8 @@ public class Ball extends Elliptic {
 	
 	public Ball(Game game, Point position) {
 		super(game, position, new Dimension(10, 10));
-		setColor(255,255,255);
-		direction = new Vector(7,7);	
+		setColor(255,255,255);	
+		direction = new Vector(game.random(-7, 7),7);
 		fullsize = 20;
 	}
 
@@ -54,7 +54,6 @@ public class Ball extends Elliptic {
 	
 	public void setSpeed(float speed){
 		direction.mult(speed);
-//		direction.normalize();
 	}
 	
 	public void move() {

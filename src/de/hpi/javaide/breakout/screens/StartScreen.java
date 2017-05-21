@@ -112,14 +112,22 @@ public class StartScreen implements Screen {
 			game.getHighscore().setUserName(game.getHighscore().getUserName().substring(0, game.getHighscore().getUserName().length()-1));
 			break;
 		case "1":
-			game.setPaddleMode('1');
-			infoBox.update(game.getInfo());
-			infoBox.display();
+			if(start == true){
+				game.setPaddleMode('1');
+				infoBox.update(game.getInfo());
+				infoBox.display();
+			} else {
+				game.getHighscore().setUserName(game.getHighscore().getUserName() + key);	
+			}
 			break;
 		case "2":
-			game.setPaddleMode('2');
-			infoBox.update(game.getInfo());
-			infoBox.display();
+			if(start == true){			
+				game.setPaddleMode('2');
+				infoBox.update(game.getInfo());
+				infoBox.display();
+		} else {
+			game.getHighscore().setUserName(game.getHighscore().getUserName() + key);	
+		}			
 			break;
 			
 		default: 

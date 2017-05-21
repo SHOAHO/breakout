@@ -9,7 +9,6 @@ import de.hpi.javaide.breakout.elements.Wall;
 import de.hpi.javaide.breakout.elements.ui.Score;
 import de.hpi.javaide.breakout.elements.ui.Timer;
 import de.hpi.javaide.breakout.starter.Game;
-import processing.core.PConstants;
 
 /**
  * The Screen can be in three states, either the StartScreen, the GameScreen, or the EndScreen.

@@ -49,13 +49,20 @@ public class Highscore extends UIObject {
 	}
 
 	public void updateHighscore() {
-		TableRow newRow = scoreTable.addRow();
-		newRow.setInt("id", scoreTable.getRowCount() - 1);
-		newRow.setString("name", userName);
-		newRow.setInt("score", score.getScore());
+		TableRow oldRow = scoreTable.findRow(userName, "name");
+		if(oldRow != null){
+			if(oldRow.getInt("score") < score.getScore()){
+				oldRow.setInt("score", score.getScore());
+			}
+		} else {
+			TableRow newRow = scoreTable.addRow();
+			newRow.setInt("id", scoreTable.getRowCount() - 1);
+			newRow.setString("name", userName);
+			newRow.setInt("score", score.getScore());			
+		}
 
 		game.saveTable(scoreTable, "data/Highscore.csv");
-		scoreTable.sort("score");
+		scoreTable.sortReverse("score");
 	}
 
 	public void loadHighscore() {
@@ -77,21 +84,25 @@ public class Highscore extends UIObject {
 	@Override
 	public void display() {
 		// TODO Auto-generated method stub
-		int i = 0;
+		game.fill(255);
+		game.textFont(Font.getFont24());	
+		
 		String info = "Highscore\n";
-		for (TableRow row : scoreTable.rows()) {
-//			int id = row.getInt("id");
+		game.text(info, game.width/4, 30);		
+		
+		int counter = scoreTable.lastRowIndex();
+		if(counter > 14){
+			counter = 14;
+		}
+		for (int i = 0; i < counter+1; i++) {
+			TableRow row = scoreTable.getRow(i);
 			String name = row.getString("name");
 			int score = row.getInt("score");
-			i++;
-			info += i + "  " + name + " " + score + "\n";
-			if(i == 10){
-				break;
-			}
+			
+			game.text(i+1, game.width/4, 30 + ((i+1) * 30));
+			game.text(name, (game.width/4)+50, 30 + ((i+1) * 30));
+			game.text(score, (game.width/4)+400, 30 + ((i+1) * 30));
 		}
-		game.fill(255);
-		game.textFont(Font.getFont24());
-		game.text(info, game.width/4, 30);
 	}
 
 	@Override
