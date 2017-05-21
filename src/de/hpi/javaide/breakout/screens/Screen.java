@@ -19,6 +19,10 @@ public interface Screen extends Initializable, Displayable, Updateable {
 	String KEY_SPACE 		= "Space key pressed";
 	String KEY_DELETE 		= "Delete key pressed";
 	String KEY_BACKSPACE 	= "Backspace key pressed";
+	String CURSOR_RIGHT = "Cursor right pressed";
+	String CURSOR_LEFT = "Cursor left pressed";
+	String CURSOR_UP = "Cursor up pressed";
+	String CURSOR_DOWN = "Cursor down pressed";
 
 	void handleKeyPressed(String key);
 

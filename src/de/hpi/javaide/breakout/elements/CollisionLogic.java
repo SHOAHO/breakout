@@ -55,6 +55,13 @@ public class CollisionLogic {
 				   Game.SCREEN_X < (ball.getX() + ball.getWidth()/2);
 	}
 	
+	public static boolean checkPaddleCollisionLeftBorder(Game game, Paddle paddle){
+		return 0 > (paddle.getX() - paddle.getWidth()/2);
+	}
+	public static boolean checkPaddleCollisionRightBorder(Game game, Paddle paddle){
+		return Game.SCREEN_X < (paddle.getX() + paddle.getWidth()/2) ;
+	}
+	
 	public static boolean checkCollisionTopBorder(Game game, Ball ball){
 		return 0 > (ball.getY() - ball.getHeight()/2);
 	}
