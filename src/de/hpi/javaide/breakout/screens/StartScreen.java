@@ -65,9 +65,9 @@ public class StartScreen implements Screen {
 		info += "Press Enter to launch the balls!\n";
 		info += "Control speed with cursor up/down!\n";
 		info += "Move paddle using your mouse\n";
-		info += "or cursor keys!\n";
-		info += "1 - Slide Mode / 2 - Step Mode\n";
-		info += "Spacebar resets paddle!\n";
+		info += "  or cursor keys!\n";
+		info += "Keys: 1 - Slide Mode / 2 - Step Mode\n";
+		info += "       Spacebar resets paddle!\n";
 		game.setPaddleMode('1');
 		game.setInfo(info);
 		infoBox = new Info(game, info);

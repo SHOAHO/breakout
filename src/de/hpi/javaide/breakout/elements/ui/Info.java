@@ -19,7 +19,7 @@ public class Info extends UIObject {
 	@Override
 	public void display() {
 	    game.textFont(Font.getFont24());
-	    game.text(content, Game.SCREEN_X/4, Game.SCREEN_Y/3);
+	    game.text(content, Game.SCREEN_X/10, Game.SCREEN_Y/4);
 	}
 
 	@Override

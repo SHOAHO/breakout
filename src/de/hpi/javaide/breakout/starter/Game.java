@@ -110,9 +110,9 @@ public class Game extends PApplet implements GameConstants {
 		
 		switch (paddleMode){
 		case '1':
-			return "Paddle in Slide Mode\n";
+			return " >You are playing with paddle in Slide Mode\n";
 		case '2':
-			return "Paddle in Step Mode\n";
+			return " >You are playing with paddle in Step Mode\n";
 		default:
 			return " ";
 		}
