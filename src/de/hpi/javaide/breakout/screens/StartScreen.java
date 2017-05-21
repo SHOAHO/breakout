@@ -62,10 +62,16 @@ public class StartScreen implements Screen {
 //		game.noLoop();
 		game.background(0);	
 		String info = "Press Enter to start!\n";
-		info += "Press Enter to launch the balls\n";
+		info += "Press Enter to launch the balls!\n";
+		info += "Control speed with cursor up/down!\n";
 		info += "Move paddle using your mouse\n";
-		info += "or keys <H>(right) and <G>(left)\n";
+		info += "or cursor keys!\n";
+		info += "1 - Slide Mode / 2 - Step Mode\n";
+		info += "Spacebar resets paddle!\n";
+		game.setPaddleMode('1');
+		game.setInfo(info);
 		infoBox = new Info(game, info);
+		infoBox.update(game.getInfo());
 		infoBox.display();
 	}
 	
@@ -105,6 +111,17 @@ public class StartScreen implements Screen {
 		case Screen.KEY_BACKSPACE:	
 			game.getHighscore().setUserName(game.getHighscore().getUserName().substring(0, game.getHighscore().getUserName().length()-1));
 			break;
+		case "1":
+			game.setPaddleMode('1');
+			infoBox.update(game.getInfo());
+			infoBox.display();
+			break;
+		case "2":
+			game.setPaddleMode('2');
+			infoBox.update(game.getInfo());
+			infoBox.display();
+			break;
+			
 		default: 
 			game.getHighscore().setUserName(game.getHighscore().getUserName() + key);
 			break;

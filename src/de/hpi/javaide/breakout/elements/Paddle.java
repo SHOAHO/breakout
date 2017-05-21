@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.Point;
 
 import de.hpi.javaide.breakout.basics.Rectangular;
+import de.hpi.javaide.breakout.basics.Vector;
 import de.hpi.javaide.breakout.starter.Game;
 import processing.core.PApplet;
 
@@ -12,6 +13,11 @@ import processing.core.PApplet;
  * @param game Game provide access to the Processing features
  */
 public class Paddle extends Rectangular {
+	
+	int START_SPEED = 7;
+	private Vector direction = new Vector(0,0);
+
+	
 	public Paddle(Game game) {
 		super(game, new Point(game.width / 2, game.height - 20), new Dimension(100, 20));
 		setColor(150, 150, 150);
@@ -34,4 +40,77 @@ public class Paddle extends Rectangular {
 	public void stepLeft(){
 		update(new Point( getX() - 10, getY() ), new Dimension(getWidth(), getHeight()) );
 	}
+	public void moreLeft(){
+		if (CollisionLogic.checkPaddleCollisionLeftBorder(game, this)){
+			return;
+		}
+
+		float lf_x = direction.getX();
+		
+		if (lf_x > 0){				//paddle is moving to the right
+			if (lf_x > START_SPEED){			//reduce speed
+				direction.setX((float) (lf_x * 0.66666) );
+			}
+			else{					// stop paddle
+				stop();
+			}
+		}
+		else{					//paddle is moving to the left
+			if (lf_x > -START_SPEED){			// start paddle
+				direction.setX((float) (-START_SPEED) );
+			}
+			else{					// speed up 
+				direction.setX((float) (lf_x * 1.5 ));
+			}
+		}
+	}
+	
+	public void moreRight(){
+		
+		if (CollisionLogic.checkPaddleCollisionRightBorder(game, this)){
+			return;
+		}
+		float lf_x = direction.getX();
+		
+		if (lf_x < 0){				//paddle is moving to the left
+			if (lf_x < -START_SPEED){			//reduce speed
+				direction.setX((float) (lf_x * 0.66666) );
+			}
+			else{					// stop paddle
+				stop();
+			}
+		}
+		else{					//paddle is moving to the right
+			if (lf_x < 5){			// start paddle
+				direction.setX((float) (START_SPEED) );
+			}
+			else{					// speed up 
+				direction.setX((float) (lf_x * 1.5 ));
+			}
+		} 
+	}
+
+	public void slide() {
+		// TODO Auto-generated method stub
+		update(new Point(getX() + (int) direction.getX(), 
+				         getY() + (int) direction.getY()), this.dimension);
+	}	
+	
+	public void reset(){
+		direction.setX(0);
+		update(new Point( game.width / 2, getY() ), new Dimension(getWidth(), getHeight()) );
+	}
+	
+	public void stopAtLeft(){
+		stop();
+		update(new Point( 0 + getWidth() / 2, getY() ), new Dimension(getWidth(), getHeight()) );
+	}
+	public void stopAtRight(){
+		update(new Point( game.width - getWidth() / 2, getY() ), new Dimension(getWidth(), getHeight()) );
+		stop();
+	}
+	public void stop(){
+		direction.setX(0);
+	}
+
 }

@@ -9,6 +9,7 @@ import de.hpi.javaide.breakout.elements.Wall;
 import de.hpi.javaide.breakout.elements.ui.Score;
 import de.hpi.javaide.breakout.elements.ui.Timer;
 import de.hpi.javaide.breakout.starter.Game;
+import processing.core.PConstants;
 
 /**
  * The Screen can be in three states, either the StartScreen, the GameScreen, or the EndScreen.
@@ -94,6 +95,14 @@ public class GameScreen implements Screen {
 	 */
 	@Override
 	public void update() {
+		paddle.slide();
+		if (CollisionLogic.checkPaddleCollisionLeftBorder(game, paddle)){
+			paddle.stopAtLeft();			
+		}
+		if ( CollisionLogic.checkPaddleCollisionRightBorder(game, paddle)){
+			paddle.stopAtRight();
+		}
+		
 		if (currentBall != null) {
 			currentBall.move();
 			CollisionLogic.checkCollision(game, currentBall, paddle, wall);
@@ -132,15 +141,33 @@ public class GameScreen implements Screen {
 			currentBall = ballDepot.dispense();
 			break;
 		case Screen.KEY_SPACE:
+			paddle.reset();
 			break;
-		case "h":
-			paddle.stepRight();
+		case Screen.CURSOR_RIGHT:
+			switch (game.getPaddleMode()){
+			case '2':
+				paddle.stepRight();
+				break;
+			case '1':
+				paddle.moreRight();
+				break;
+			}
 			break;
-		case "g":
-			paddle.stepLeft();
+		case Screen.CURSOR_LEFT:
+			switch (game.getPaddleMode()){
+				case '2':
+					paddle.stepLeft();
+					break;
+				case '1':
+					paddle.moreLeft();
+					break;
+			}
 			break;
-		case " ":
-			currentBall.setSpeed(2);
+		case Screen.CURSOR_UP:
+			currentBall.setSpeed((float)1.5);
+			break;
+		case Screen.CURSOR_DOWN:
+			currentBall.setSpeed((float)0.666);
 			break;
 		default:
 			break;

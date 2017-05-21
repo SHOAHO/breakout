@@ -19,12 +19,15 @@ public class Info extends UIObject {
 	@Override
 	public void display() {
 	    game.textFont(Font.getFont24());
-	    game.text(content, Game.SCREEN_X/4, Game.SCREEN_Y/2);
+	    game.text(content, Game.SCREEN_X/4, Game.SCREEN_Y/3);
 	}
 
 	@Override
 	public void update(String input) {
 		// TODO Auto-generated method stub
 		content = input;
+	}
+	public String getContent(){
+		return content;
 	}
 }
