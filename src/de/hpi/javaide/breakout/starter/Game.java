@@ -62,7 +62,8 @@ public class Game extends PApplet implements GameConstants {
 				System.out.println("langsamer");
 				ScreenManager.getCurrentScreen().handleKeyPressed(Screen.CURSOR_DOWN);
 				break;
-				
+			default:
+				break;	
 			}
 		}
 		switch (key) {

@@ -48,9 +48,13 @@ public class Brick extends Rectangular {
 			System.out.println(status);
 			switch (status) {
 			case 2:
-				this.setColor(255, 255, 0); break;
+				this.setColor(255, 255, 0);
+				break;
 			case 1:
 				this.setColor(255, 0, 0);
+				break;
+			default:
+				break;
 			}
 		}
 	}

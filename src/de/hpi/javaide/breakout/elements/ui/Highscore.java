@@ -88,7 +88,7 @@ public class Highscore extends UIObject {
 		game.textFont(Font.getFont24());	
 		
 		String info = "Highscore\n";
-		game.text(info, game.width/4, 30);		
+		game.text(info, game.width/(float)4, 30);		
 		
 		int counter = scoreTable.lastRowIndex();
 		if(counter > 14){
@@ -99,9 +99,9 @@ public class Highscore extends UIObject {
 			String name = row.getString("name");
 			int score = row.getInt("score");
 			
-			game.text(i+1, game.width/4, 30 + ((i+1) * 30));
-			game.text(name, (game.width/4)+50, 30 + ((i+1) * 30));
-			game.text(score, (game.width/4)+400, 30 + ((i+1) * 30));
+			game.text(i+1, game.width/(float)4, 30 + ((i+1) * 30));
+			game.text(name, (game.width/(float)4)+50, 30 + ((i+1) * 30));
+			game.text(score, (game.width/(float)4)+400, 30 + ((i+1) * 30));
 		}
 	}
 

@@ -87,7 +87,7 @@ public class StartScreen implements Screen {
 			System.out.println("input name");
 			game.fill(255);
 			game.textFont(Font.getFont24());
-			game.text("Please enter your name:" + (game.getHighscore().getUserName()), game.width/4, game.height/2);	
+			game.text("Please enter your name:" + (game.getHighscore().getUserName()), game.width/(float)4, game.height/(float)2);	
 		} else {
 			System.out.println("Hit enter to start");
 			infoBox.display();		
