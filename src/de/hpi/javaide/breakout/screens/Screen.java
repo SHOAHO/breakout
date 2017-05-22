@@ -25,6 +25,7 @@ public interface Screen extends Initializable, Displayable, Updateable {
 	String CURSOR_DOWN = "Cursor down pressed";
 
 	void handleKeyPressed(String key);
+	void handleKeyReleased();
 
 	void handleMouseDragged();
 

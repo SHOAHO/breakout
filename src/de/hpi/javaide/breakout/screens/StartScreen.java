@@ -68,7 +68,7 @@ public class StartScreen implements Screen {
 		info += "  or cursor keys!\n";
 		info += "Keys: 1 - Slide Mode / 2 - Step Mode\n";
 		info += "       Spacebar resets paddle!\n";
-		game.setPaddleMode('1');
+		game.setPaddleMode('2');
 		game.setInfo(info);
 		infoBox = new Info(game, info);
 		infoBox.update(game.getInfo());
@@ -139,6 +139,9 @@ public class StartScreen implements Screen {
 			break;
 		}
 	}
+	
+	@Override
+	public void handleKeyReleased(){}
 
 	@Override
 	public void handleMouseDragged() {

@@ -146,7 +146,11 @@ public class GameScreen implements Screen {
 		case Screen.CURSOR_RIGHT:
 			switch (game.getPaddleMode()){
 			case '2':
-				paddle.stepRight();
+				if (paddle.getSpeed() < (float) 0.1 
+					&& paddle.getSpeed() > (float) -0.1 ){
+					paddle.moreRight();
+				}
+//				paddle.stepRight();
 				break;
 			case '1':
 				paddle.moreRight();
@@ -156,7 +160,11 @@ public class GameScreen implements Screen {
 		case Screen.CURSOR_LEFT:
 			switch (game.getPaddleMode()){
 				case '2':
-					paddle.stepLeft();
+					if (paddle.getSpeed() < (float) 0.1 
+							&& paddle.getSpeed() > (float) -0.1 ){
+							paddle.moreLeft();
+						}
+//					paddle.stepLeft();
 					break;
 				case '1':
 					paddle.moreLeft();
@@ -192,4 +200,9 @@ public class GameScreen implements Screen {
 		// (Hint: the update() Method expects an input argument of type String)
 		score.update(amount + "");
 	}
+	public void handleKeyReleased(){
+		if (game.getPaddleMode() == '2'){
+			paddle.stop();
+		}
+	};
 }

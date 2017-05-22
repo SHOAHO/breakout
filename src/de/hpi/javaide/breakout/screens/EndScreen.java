@@ -102,6 +102,10 @@ public class EndScreen implements Screen {
 			}		
 		}
 	}
+	@Override
+	public void handleKeyReleased(){
+		
+	}
 
 	@Override
 	public void handleMouseDragged() {

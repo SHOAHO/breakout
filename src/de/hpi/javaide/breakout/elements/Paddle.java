@@ -48,12 +48,13 @@ public class Paddle extends Rectangular {
 		float lf_x = direction.getX();
 		
 		if (lf_x > 0){				//paddle is moving to the right
-			if (lf_x > START_SPEED){			//reduce speed
+			stop();
+/*			if (lf_x > START_SPEED){			//reduce speed
 				direction.setX((float) (lf_x * 0.66666) );
 			}
 			else{					// stop paddle
 				stop();
-			}
+			}  */
 		}
 		else{					//paddle is moving to the left
 			if (lf_x > -START_SPEED){			// start paddle
@@ -73,12 +74,13 @@ public class Paddle extends Rectangular {
 		float lf_x = direction.getX();
 		
 		if (lf_x < 0){				//paddle is moving to the left
-			if (lf_x < -START_SPEED){			//reduce speed
+			stop();
+/*			if (lf_x < -START_SPEED){			//reduce speed
 				direction.setX((float) (lf_x * 0.66666) );
 			}
 			else{					// stop paddle
 				stop();
-			}
+			} */
 		}
 		else{					//paddle is moving to the right
 			if (lf_x < 5){			// start paddle
@@ -111,6 +113,11 @@ public class Paddle extends Rectangular {
 	}
 	public void stop(){
 		direction.setX(0);
+	}
+
+	public float getSpeed() {
+		// TODO Auto-generated method stub
+		return direction.getX();
 	}
 
 }

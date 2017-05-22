@@ -10,7 +10,7 @@ import processing.core.PApplet;
 public class Game extends PApplet implements GameConstants {
 
 	String info = " ";
-	char paddleMode = '1';
+	char paddleMode = '2';
 
 	// Setup the game
 	@Override
@@ -87,6 +87,7 @@ public class Game extends PApplet implements GameConstants {
 
 	@Override
 	public void keyReleased() {
+		ScreenManager.getCurrentScreen().handleKeyReleased();				
 
 	}
 
@@ -125,4 +126,5 @@ public class Game extends PApplet implements GameConstants {
 	public char getPaddleMode() {
 		return paddleMode;
 	}
+	
 }
