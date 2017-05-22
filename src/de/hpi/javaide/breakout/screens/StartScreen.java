@@ -111,7 +111,7 @@ public class StartScreen implements Screen {
 		case Screen.KEY_BACKSPACE:	
 			game.getHighscore().setUserName(game.getHighscore().getUserName().substring(0, game.getHighscore().getUserName().length()-1));
 			break;			
-		case "1":
+		case "1":					//set paddle to slide mode
 			if(start == true){
 				game.setPaddleMode('1');
 				infoBox.update(game.getInfo());
@@ -120,7 +120,7 @@ public class StartScreen implements Screen {
 				game.getHighscore().setUserName(game.getHighscore().getUserName() + key);	
 			}
 			break;
-		case "2":
+		case "2":					//set paddle to step mode
 			if(start == true){			
 				game.setPaddleMode('2');
 				infoBox.update(game.getInfo());
@@ -141,7 +141,9 @@ public class StartScreen implements Screen {
 	}
 	
 	@Override
-	public void handleKeyReleased(){}
+	public void handleKeyReleased(){
+		// only relevant for cursor right/left to control paddle
+	}
 
 	@Override
 	public void handleMouseDragged() {

@@ -9,9 +9,9 @@ import de.hpi.javaide.breakout.Measureable;
 import de.hpi.javaide.breakout.starter.Game;
 
 
-//TODO hier werden wir sicher eine Collection brauchen um die Bälle unterzubringen.
+//TODO hier werden wir sicher eine Collection brauchen um die Bï¿½lle unterzubringen.
 //     Vermutlich werden wir wissen wollen wann das Depot leer ist.
-//     Irgendwie müssen die Bälle an den Start gebracht werden.
+//     Irgendwie mï¿½ssen die Bï¿½lle an den Start gebracht werden.
 public class BallDepot implements Displayable, Measureable {
 
 	private ArrayList<Ball> balls;
@@ -20,7 +20,6 @@ public class BallDepot implements Displayable, Measureable {
 	private int distance;
 
 	public BallDepot(Game game) {
-		// TODO Auto-generated constructor stub
 		balls = new ArrayList<>();
 		
 		x = game.width-140;
@@ -33,8 +32,6 @@ public class BallDepot implements Displayable, Measureable {
 
 	@Override
 	public int getX() {
-		
-		// TODO Auto-generated method stub
 		return this.x;
 	}
 
@@ -46,31 +43,28 @@ public class BallDepot implements Displayable, Measureable {
 
 	@Override
 	public int getWidth() {
-		// TODO Auto-generated method stub
 		return distance * Game.LIVES - distance + 10;
 	}
 
 	@Override
 	public int getHeight() {
-		// TODO Auto-generated method stub
 		return this.y;
 	}
 
 	@Override
 	public void display() {
-		// TODO Auto-generated method stub
 		for( Ball ball : balls ){
 			ball.display();
 		}
 	}
 
+/** are there remaining balls?*/	
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
 	    return balls.isEmpty();
 	}
 
+/**throw a new ball onto the screen*/	
 	public Ball dispense() {
-		// TODO Auto-generated method stub
 		if (this.isEmpty()) {
 			return null;
 		} else {

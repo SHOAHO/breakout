@@ -24,9 +24,11 @@ public class Info extends UIObject {
 
 	@Override
 	public void update(String input) {
-		// TODO Auto-generated method stub
+		// just like setContent
 		content = input;
 	}
+	
+/**UIObject has no getter for content*/	
 	public String getContent(){
 		return content;
 	}

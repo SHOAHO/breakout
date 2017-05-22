@@ -52,12 +52,14 @@ public class Ball extends Elliptic {
 		direction.setY(-direction.getY());
 	}	
 	
-	public void setSpeed(float speed){
-		direction.mult(speed);
+/** set speed by increasing with speedFactor 
+ * if speedFactor < 1 speed is decreasing */	
+	public void increaseSpeed(float speedFactor){
+		direction.mult(speedFactor);
 	}
-	
+
+/**move ball to a new position, depending on direction*/	
 	public void move() {
-		// TODO Auto-generated method stub
 		update(new Point(getX() + (int) direction.getX(), 
 				         getY() + (int) direction.getY()), this.dimension);
 	}	

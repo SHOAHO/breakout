@@ -34,12 +34,24 @@ public class Paddle extends Rectangular {
 	public void move() {
 		update(new Point(game.mouseX, getY()), new Dimension(getWidth(), getHeight()));
 	}
+	
+/**paddle is starting to the right. It stops when key is released*/	
 	public void stepRight(){
-		update(new Point( getX() + 10, getY() ), new Dimension(getWidth(), getHeight()) );
+		if (getSpeed() < (float) 0.1 
+			 && getSpeed() > (float) -0.1 ){
+				moreRight();
+			}
 	}
+	
+	/**paddle is starting to the left. It stops when key is released*/	
 	public void stepLeft(){
-		update(new Point( getX() - 10, getY() ), new Dimension(getWidth(), getHeight()) );
+		if (getSpeed() < (float) 0.1 
+			 && getSpeed() > (float) -0.1 ){
+				moreLeft();
+			}
 	}
+
+/**speed up paddle, direction left*/	
 	public void moreLeft(){
 		if (CollisionLogic.checkPaddleCollisionLeftBorder(game, this)){
 			return;
@@ -49,12 +61,6 @@ public class Paddle extends Rectangular {
 		
 		if (lf_x > 0){				//paddle is moving to the right
 			stop();
-/*			if (lf_x > START_SPEED){			//reduce speed
-				direction.setX((float) (lf_x * 0.66666) );
-			}
-			else{					// stop paddle
-				stop();
-			}  */
 		}
 		else{					//paddle is moving to the left
 			if (lf_x > -START_SPEED){			// start paddle
@@ -66,6 +72,7 @@ public class Paddle extends Rectangular {
 		}
 	}
 	
+	/**speed up paddle, direction right*/
 	public void moreRight(){
 		
 		if (CollisionLogic.checkPaddleCollisionRightBorder(game, this)){
@@ -75,12 +82,6 @@ public class Paddle extends Rectangular {
 		
 		if (lf_x < 0){				//paddle is moving to the left
 			stop();
-/*			if (lf_x < -START_SPEED){			//reduce speed
-				direction.setX((float) (lf_x * 0.66666) );
-			}
-			else{					// stop paddle
-				stop();
-			} */
 		}
 		else{					//paddle is moving to the right
 			if (lf_x < 5){			// start paddle
@@ -92,14 +93,15 @@ public class Paddle extends Rectangular {
 		} 
 	}
 
+	/**paddle slides to a new position, depending on direction*/
 	public void slide() {
-		// TODO Auto-generated method stub
 		update(new Point(getX() + (int) direction.getX(), 
 				         getY() + (int) direction.getY()), this.dimension);
 	}	
 	
+	/**stop paddle and set it to start position*/
 	public void reset(){
-		direction.setX(0);
+		stop();
 		update(new Point( game.width / 2, getY() ), new Dimension(getWidth(), getHeight()) );
 	}
 	
@@ -116,7 +118,6 @@ public class Paddle extends Rectangular {
 	}
 
 	public float getSpeed() {
-		// TODO Auto-generated method stub
 		return direction.getX();
 	}
 

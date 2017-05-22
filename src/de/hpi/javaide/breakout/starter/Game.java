@@ -44,7 +44,7 @@ public class Game extends PApplet implements GameConstants {
 	// Interact with the keyboard
 	@Override
 	public void keyPressed() {
-		if (key==CODED){
+		if (key==CODED){			//special keys like cursor 
 			switch (keyCode){
 			case RIGHT:
 				System.out.println("nach rechts");
@@ -103,10 +103,12 @@ public class Game extends PApplet implements GameConstants {
 		info = if_info;
 	}
 	
+/** Infotext is stored in game, because paddleInfo is added. **/	
 	public String getInfo(){
 		return info + getPaddleInfo();
 	}
 	
+/** Info about paddle mode**/	
 	public String getPaddleInfo(){
 		
 		switch (paddleMode){
@@ -119,10 +121,13 @@ public class Game extends PApplet implements GameConstants {
 		}
 	}
 
+/** what kind of paddle do you like? Self-sliding paddle started by
+ * the cursor keys or a paddle that stops when the cursor kewy is released **/	
 	public void setPaddleMode(char if_mode) {
 		paddleMode = if_mode;
 	}
 
+	/** get the selected paddle mode**/
 	public char getPaddleMode() {
 		return paddleMode;
 	}

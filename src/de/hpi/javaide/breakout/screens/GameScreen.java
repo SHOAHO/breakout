@@ -140,17 +140,15 @@ public class GameScreen implements Screen {
 		case Screen.KEY_ENTER:
 			currentBall = ballDepot.dispense();
 			break;
+			
+/*control paddle*/			
 		case Screen.KEY_SPACE:
 			paddle.reset();
 			break;
 		case Screen.CURSOR_RIGHT:
 			switch (game.getPaddleMode()){
 			case '2':
-				if (paddle.getSpeed() < (float) 0.1 
-					&& paddle.getSpeed() > (float) -0.1 ){
-					paddle.moreRight();
-				}
-//				paddle.stepRight();
+				paddle.stepRight();
 				break;
 			case '1':
 				paddle.moreRight();
@@ -160,25 +158,22 @@ public class GameScreen implements Screen {
 		case Screen.CURSOR_LEFT:
 			switch (game.getPaddleMode()){
 				case '2':
-					if (paddle.getSpeed() < (float) 0.1 
-							&& paddle.getSpeed() > (float) -0.1 ){
-							paddle.moreLeft();
-						}
-//					paddle.stepLeft();
+					paddle.stepLeft();
 					break;
 				case '1':
 					paddle.moreLeft();
 					break;
 			}
 			break;
+/* control ball speed */
 		case Screen.CURSOR_UP:
 			if(currentBall != null){
-				currentBall.setSpeed((float)1.5);	
+				currentBall.increaseSpeed((float)1.5);	
 			}
 			break;
 		case Screen.CURSOR_DOWN:
 			if(currentBall != null){
-				currentBall.setSpeed((float)0.666);
+				currentBall.increaseSpeed((float)0.666);
 			}
 			break;
 		default:
@@ -200,6 +195,8 @@ public class GameScreen implements Screen {
 		// (Hint: the update() Method expects an input argument of type String)
 		score.update(amount + "");
 	}
+	
+/**in paddle step mode stop paddle if key is released */	
 	public void handleKeyReleased(){
 		if (game.getPaddleMode() == '2'){
 			paddle.stop();

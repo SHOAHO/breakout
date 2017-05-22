@@ -41,7 +41,7 @@ public class Brick extends Rectangular {
 	}
 
 	public void nextStatus() {
-		// TODO Auto-generated method stub
+
 		if (status > 0) {
 			System.out.println(status);
 			status--;
